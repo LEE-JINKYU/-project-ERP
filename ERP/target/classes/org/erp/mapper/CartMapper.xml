@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace로 TestMapper와 연결 -->
+<mapper namespace="org.erp.mapper.CartMapper">
+
+	<insert id="addCart">
+		insert into cart (empno, productid, productcount, companyname, productcnt, confirm)
+		values(#{empno}, #{productid}, #{productcount}, #{companyname}, #{productcnt}, 1)
+	</insert>
+
+	<delete id="deleteCart">
+		delete from cart where cartid=#{cartid}
+	</delete>
+
+	<!-- 구매 신청 (purchase) -->
+	<select id="getCartList" resultType="org.erp.model.CartDTO">
+		select *
+		from(
+		select @rownum:=@rownum+1 rownum, a.productcount,
+		a.cartid, a.empno, c.name, b.*
+		from (cart a left
+		outer join product b on
+		a.productid = b.productid
+		left outer join member c on a.empno=c.empno),
+		(select @rownum:=0) as tmp
+		where c.empno=#{empno} and confirm='1'
+		) as
+		memberlist
+		<![CDATA[
+			where rownum> (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+			]]>
+	</select>
+
+
+	<!-- (purchase_list) -->
+	<select id="purchase_list" resultType="org.erp.model.CartDTO">
+		select *
+		from(
+		select @rownum:=@rownum+1 rownum, a.productcount,
+		a.cartid, a.empno, a.confirm, c.name, b.*
+		from (cart a left
+		outer join
+		product b on a.productid = b.productid
+		left outer join member c on
+		a.empno=c.empno),
+		(select @rownum:=0 from cart order by confirm desc)
+		as tmp
+		where c.empno=#{empno}
+		order by confirm desc
+		) as memberlist
+		<![CDATA[
+			where rownum> (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+			]]>
+		group by productid;
+
+	</select>
+
+	<!-- (purchase_wait) -->
+	<select id="purchase_wait" resultType="org.erp.model.CartDTO">
+		select *
+		from(
+		select @rownum:=@rownum+1 rownum, a.productcount,
+		a.cartid, a.empno, a.confirm, c.name, b.*
+		from (cart a left
+		outer join
+		product b on a.productid = b.productid
+		left outer join member c on
+		a.empno=c.empno),
+		(select @rownum:=0) as tmp
+		where confirm='1'
+		) as
+		memberlist
+		<![CDATA[
+			where rownum> (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+			]]>
+	</select>
+
+	<!-- (purchase_all_list) -->
+	<select id="purchase_all_list"
+		resultType="org.erp.model.CartDTO">
+		select *
+		from(
+		select @rownum:=@rownum+1 rownum, a.productcount,
+		a.cartid, a.empno,
+		a.confirm, c.name, b.*
+		from (cart a left outer join
+		product b on
+		a.productid = b.productid left outer join member c on
+		a.empno=c.empno), (select @rownum:=0 from cart order by confirm desc)
+		as tmp
+		) as memberlist
+		<![CDATA[
+			where rownum> (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+			]]>
+		group by productid;
+	</select>
+
+	<select id="purchase_total" resultType="integer">
+		select count(*) from cart
+		where empno=#{empno} and confirm='1'
+	</select>
+
+	<select id="purchase_list_total" resultType="integer">
+		select count(*) from
+		cart where empno=#{empno}
+	</select>
+
+	<select id="purchase_wait_total" resultType="integer">
+		select count(*) from
+		cart where confirm="1"
+	</select>
+
+	<select id="total" resultType="integer">
+		select count(*) from cart
+	</select>
+
+	<!-- 상품 정보 불러오기 -->
+	<select id="cart_modify" resultType="org.erp.model.CartDTO">
+		select a.cartid, a.empno,
+		a.productid, a.productcount, b.productname,
+		b.price, b.companyname,
+		b.productcnt
+		from
+		cart a left
+		outer join product b on a.productid =
+		b.productid
+		where
+		cartid=#{cartid}
+	</select>
+
+	<update id="cart_modifypost">
+		update cart
+		set productcount=#{productcount}
+		where
+		cartid=#{cartid}
+	</update>
+
+	<update id="cart_confirm">
+		update cart
+		set confirm='0'
+		where cartid=#{cartid}
+	</update>
+
+	<select id="inventory_category"
+		resultType="org.erp.model.CartDTO">
+		select b.companyname, b.productid, b.productname, b.price,
+		b.productcnt,
+		sum(a.productcount) as sumcount
+		from cart a left outer
+		join
+		product b on a.productid = b.productid
+		where
+		companyname=#{companyname} and
+		productname=#{productname} and
+		confirm='0'
+		group by
+		productname;
+	</select>
+
+	<select id="inventory_category1"
+		resultType="org.erp.model.CartDTO">
+		select b.productid, b.companyname, b.productname, b.price,
+		sum(productcount)
+		as sumcount
+		from cart a left outer join
+		product b on
+		a.productid = b.productid
+		where a.companyname=#{companyname} and
+		confirm='0'
+		group by
+		productid;
+	</select>
+
+
+
+	<select id="inventory" resultType="org.erp.model.CartDTO">
+		select *
+		from(
+		select @rownum:=@rownum+1 rownum, sum(a.productcount) as
+		sumcount,
+		a.confirm, c.name, b.*
+		from (cart a left
+		outer join
+		product b on
+		a.productid = b.productid
+		left outer join member c on a.empno=c.empno),
+		(select @rownum:=0) as tmp
+		<if test="keyword == null">
+		where confirm = '0'
+		</if>
+		<if test="keyword != null">
+			<choose>
+				<when test="type=='C'.toString()">
+					where confirm = '0' and companyname like
+					CONCAT('%',#{keyword},'%')
+				</when>
+				<otherwise>
+					where confirm = '0' and productname like
+					CONCAT('%',#{keyword},'%')
+				</otherwise>
+			</choose>
+		</if>
+		group by productid
+		) as memberlist
+		<![CDATA[
+			where rownum> (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+			]]>
+	</select>
+
+	<select id="inventory_total" resultType="integer">
+		select count(*)
+		from(
+		select sum(a.productcount) as sumcount, a.confirm,
+		c.name, b.*
+		from (cart a left
+		outer join
+		product b on
+		a.productid =
+		b.productid
+		left outer join member c on a.empno=c.empno)
+		<if test="keyword != null">
+			<choose>
+				<when test="type=='C'.toString()">
+					where confirm = '0' and companyname like
+					CONCAT('%',#{keyword},'%')
+				</when>
+				<otherwise>
+					where confirm = '0' and productname like
+					CONCAT('%',#{keyword},'%')
+				</otherwise>
+			</choose>
+		</if>
+		group by productid
+		) as memberlist;
+	</select>
+</mapper>

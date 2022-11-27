@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace로 TestMapper와 연결 -->
+<mapper namespace="org.erp.mapper.ProductMapper">
+
+	<!-- 상품 등록 -->
+	<insert id="product_signup">
+		insert into product(companyname, productid,
+		productname, price, productcnt, companyid)
+		values(#{companyname},#{productid},#{productname},
+		#{price},
+		#{productcnt}, #{companyid})
+	</insert>
+
+	<!-- 상품 코드 중복확인 -->
+	<select id="productidcheck" resultType="int">
+		select count(*) from
+		product
+		where productid=#{productid};
+	</select>
+
+	<!-- 상품 리스트 조회 -->
+	<select id="productlist" resultType="org.erp.model.ProductVO">
+		select *
+		from(
+		select @rownum:=@rownum+1 rownum, p.*
+		from product p,
+		(select @rownum:=0) as tmp) as productlist
+		<![CDATA[
+			where rownum> (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+			]]>
+	</select>
+
+	<select id="total" resultType="integer">
+		select count(*) from product
+	</select>
+
+	<!-- 상품 정보 불러오기 -->
+	<select id="product_modify" resultType="org.erp.model.ProductVO">
+		select * from product
+		where productid=#{productid};
+	</select>
+
+	<!-- 상품 정보 수정 -->
+	<update id="product_modifypost">
+		update product
+		set companyname=#{companyname},
+		productid=#{productid},
+		productname=#{productname},
+		price=#{price},
+		productcnt=#{productcnt}
+		where productid=#{productid};
+	</update>
+
+	<!-- 거래처 그룹 리스트 -->
+	<select id="group_company" resultType="org.erp.model.ProductVO">
+		select companyname
+		from
+		product
+		group by companyname;
+	</select>
+
+	<select id="company_select" resultType="org.erp.model.ProductVO">
+		select *
+		from product
+		where companyname=#{companyname}
+		group by productid;
+	</select>
+
+	<!-- 상품 정보 불러오기 -->
+	<select id="product_select" resultType="org.erp.model.ProductVO">
+		select * from product
+		where companyname=#{companyname} and productname=#{productname} ;
+	</select>
+
+	<delete id="product_delete">
+		delete from product where productid=#{productid};
+	</delete>
+
+</mapper>

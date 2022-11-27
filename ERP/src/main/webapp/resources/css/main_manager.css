@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	margin-top: 50px;
+}
+
+.main {
+	width: 1200px;
+	height: 800px;
+	margin: auto;
+	background: black;
+	border: 10px solid black;
+	border-radius: 10px;
+}
+
+.main_line {
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url( "../image/ERP_image_1.jpeg" );
+	background-size: cover;
+	border-radius: 5px;
+	float: left;
+	position: relative;
+}
+
+.header {
+	width: 100%;
+	height: 60px;
+}
+
+.date_bar {
+	width: 200px;
+	float: left;
+	line-height: 60px;
+}
+
+.google_search {
+	width: 320px;
+	float: left;
+	margin-left: 230px;
+	line-height: 60px;
+}
+
+.google_search_area {
+	margin-top: 10px;
+	line-height: 0px;
+	border: 2px solid white;
+	border-radius: 4px;
+}
+
+.google_search_blank {
+	font-size: 14px;
+	width: 245px;
+	padding: 12px;
+	border: 0px;
+	outline: none;
+}
+
+.google_button {
+	cursor: pointer;
+	width: 70px;
+	height: 40px;
+	border: none;
+	background: #0000;
+	color: #ffffff;
+	outline: none;
+	float: right;
+	font-size: 30px;
+}
+
+.google_button:hover {
+	opacity: 0.5;
+	transition: 0.3s;
+}
+
+.member {
+	width: 250px;
+	float: left;
+	line-height: 60px;
+	margin-left: 80px;
+}
+
+.logout {
+	width: 100px;
+	float: right;
+	line-height: 60px;
+}
+
+.loginid {
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.logout>a {
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.logout:hover {
+	opacity: 0.5;
+	transition: 0.3s;
+}
+
+p {
+	color: white;
+	font-weight: bold;
+	font-size: 24px;
+	margin-left: 5px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.purchase {
+	width: 585px;
+	height: 350px;
+	background:;
+	position: absolute;
+	top: 70px;
+	left: 0px;
+	border-radius: 20px;
+	line-height: 200px;
+	border: 5px solid white;
+}
+
+.empinfo {
+	width: 585px;
+	height: 350px;
+	background:;
+	position: absolute;
+	top: 70px;
+	left: 595px;
+	border-radius: 20px;
+	line-height: 200px;
+	border: 5px solid white;
+}
+
+.account {
+	width: 585px;
+	height: 350px;
+	background:;
+	position: absolute;
+	top: 430px;
+	left: 0px;
+	border-radius: 20px;
+	line-height: 200px;
+	border: 5px solid white;
+}
+
+.inventory {
+	width: 585px;
+	height: 350px;
+	background:;
+	position: absolute;
+	top: 430px;
+	left: 595px;
+	border-radius: 20px;
+	line-height: 200px;
+	border: 5px solid white;
+}
+
+.text {
+	color: white;
+	display: block;
+	font-weight: bold;
+	font-size: 48px;
+	text-align: center;
+	line-height: 330px;
+}
+
+.purchase:hover, .empinfo:hover, .account:hover, .inventory:hover {
+	opacity: 0.5;
+	transition: 0.3s;
+}

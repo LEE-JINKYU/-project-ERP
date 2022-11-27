@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace로 TestMapper와 연결 -->
+<mapper namespace="org.erp.mapper.CompanyMapper">
+	<insert id="account_signup">
+		insert into company(companyid, companyname, companymanager, companytype, companyphone, startdate, companyaddr)
+		values(#{companyid},#{companyname},#{companymanager}, #{companytype}, #{companyphone}, #{startdate},
+		#{companyaddr})
+	</insert>
+	
+	<select id="companyidcheck" resultType="int">
+		select count(*) from company
+		where companyid=#{companyid};
+	</select>
+	
+	<select id="companylist" resultType="org.erp.model.CompanyVO">
+		select *
+		from(
+		select @rownum:=@rownum+1 rownum, c.*
+		from company c,
+		(select @rownum:=0) as tmp) as companylist
+		<![CDATA[
+			where rownum> (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+			]]>
+	</select>
+	
+	<select id="total" resultType="integer">
+		select count(*) from company
+	</select>
+	
+	<!-- 사원 정보 불러오기 -->
+	<select id="account_modify" resultType="org.erp.model.CompanyVO">
+	select * from company where companyid=#{companyid};
+	</select>
+	
+	<update id="account_modifypost">
+		update company 
+		set companyid=#{companyid}, 
+		companyname=#{companyname}, 
+		companymanager=#{companymanager}, 
+		companytype=#{companytype}, 
+		startdate=#{startdate}, 
+		companyaddr=#{companyaddr}, 
+		companyphone=#{companyphone}
+		where companyid=#{companyid};
+	</update>
+	
+	<!-- 멤버 삭제 설계 -->
+	<delete id="account_delete">
+		delete from company where companyid=#{companyid};
+	</delete>
+	
+		<!-- 상품 정보 불러오기 -->
+	<select id="companyid_select" resultType="org.erp.model.CompanyVO">
+		select companyid from company
+		where companyname=#{companyname};
+	</select>
+
+</mapper>

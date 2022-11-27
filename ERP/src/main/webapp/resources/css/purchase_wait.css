@@ -1,0 +1,302 @@
+@charset "UTF-8";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	margin: auto;
+	width: 100%;
+	height: 100%;
+}
+
+.main {
+	width: 1300px;
+	height: 800px;
+	margin: auto;
+	background: #3a8bc2;
+	border: 10px solid #3a8bc2;
+	border-radius: 10px;
+}
+
+.main_line {
+	float: left;
+	width: 100%;
+	height: 100%;
+	background: #d4e5f5;
+	border-radius: 5px;
+}
+
+.empinfo_header {
+	width: 100%;
+	height: 80px;
+	padding: 20px;
+	line-height: 40px;
+}
+
+h1 {
+	float: left;
+}
+
+.account_move, .product_move {
+	border-left: 2px solid black;
+	padding-left: 10px;
+	margin-left: 10px;
+}
+
+.account_move {
+	margin-left: 20px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+.windowclose {
+	border-radius: 1px;
+	width: 40px;
+	height: 40px;
+	float: right;
+	border: 5px solid #3a8bc2;
+	border-radius: 10px;
+	position: relative;
+	right: 10px;
+	top: -40px;
+}
+
+.windowclose:hover {
+	cursor: pointer;
+	box-shadow: 0px 0px 3px #3a8bc2;
+}
+
+.windowclose_1 {
+	border-top: 5px solid #3a8bc2;
+	transform: rotate(50deg);
+	position: relative;
+	top: 13px;
+}
+
+.windowclose_2 {
+	width: 30px;
+	border-top: 5px solid #3a8bc2;
+	transform: rotate(130deg);
+	position: relative;
+	top: 8px;
+}
+
+.empinfo_body {
+	margin: auto;
+	position: absolute;
+}
+
+.body_left {
+	margin-left: 10px;
+	height: 690px;
+	background: #fff;
+	border: 5px solid #3a8bc2;
+	border-radius: 10px;
+}
+
+.body_right {
+	width: 850px;
+	height: 690px;
+	position: absolute;
+	top: 0px;
+	left: 420px;
+	background: #fff;
+	border: 5px solid #3a8bc2;
+	border-radius: 10px;
+}
+
+h3 {
+	text-align: center;
+	padding: 10px;
+}
+
+.body_left table td {
+	padding: 10px;
+	line-height: 30px;
+}
+
+.body_left table td:nth-child(1) {
+	font-weight: bold;
+	width: 100px;
+	text-align: right;
+}
+
+.check_box {
+	width: 70px;
+	height: 30px;
+	position: relative;
+	top: 2px;
+	left: 5px;
+	background: white;
+	border: 1px solid black;
+	border-radius: 4px;
+	transition: 0.3s;
+}
+
+.check_box:hover {
+	color: gray;
+	border: 1px solid gray;
+	cursor: pointer;
+}
+
+.box {
+	width: 130px;
+	height: 30px;
+	border: 1px solid gray;
+	border-radius: 4px;
+	padding: 10px;
+	text-align: right;
+}
+
+.shortbox {
+	width: 70px;
+	height: 30px;
+	border: 1px solid gray;
+	border-radius: 4px;
+	padding: 10px;
+}
+
+#selectBox1, #productname {
+	width: 160px;
+	height: 30px;
+	border-radius: 4px;
+	padding-left: 5px;
+}
+
+#productcnt {
+	resize: none;
+	border: 1px solid gray;
+	border-radius: 4px;
+	padding: 10px;
+	font-weight: bold;
+}
+
+.button_div {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.submit, .cancle {
+	padding: 10px 15px;
+	margin-right: 10px;
+	background: white;
+	border: 1px solid black;
+	border-radius: 4px;
+	transition: 0.3s;
+}
+
+.submit:hover, .cancle:hover {
+	color: gray;
+	border: 1px solid gray;
+	cursor: pointer;
+}
+
+.body_right table {
+	margin: auto;
+	height: 582px;
+	border: 2px solid gray;
+	display: block;
+	overflow: auto;
+}
+
+.body_right table tr {
+	text-align: center;
+}
+
+.body_right table tr:nth-child(1) {
+	font-weight: bold;
+	background: #d4e5f5;
+}
+
+.body_right table td {
+	padding: 10px;
+}
+
+.body_right table td:nth-child(1) {
+	width: 7%;
+}
+
+.body_right table td:nth-child(2) {
+	width: 15%;
+}
+
+.body_right table td:nth-child(3) {
+	width: 20%;
+}
+
+.body_right table td:nth-child(4) {
+	width: 15%;
+}
+
+.body_right table td:nth-child(5) {
+	width: 10%;
+}
+
+.modify, .delete, .confirm {
+	padding: 5px;
+	background: white;
+	border: 1px solid black;
+	border-radius: 4px;
+	color: black;
+	transition: 0.3s;
+}
+
+.modify:hover, .delete:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.confirm{
+	border: 1px solid green;
+}
+
+.confirm:hover {
+	background: green;
+	color: white;
+}
+
+.confirm {
+	font-weight: bold;
+	color: green;
+}
+
+.page {
+	position: absolute;
+	left: 400px;
+	bottom: 15px;
+}
+
+.pagenum {
+	border: 2px solid gray;
+	border-radius: 4px;
+	padding: 5px;
+	font-weight: bold;
+	color: gray;
+	text-decoration: none;
+	opacity: 0.5;
+}
+
+.pagenum:hover {
+	border: 2px solid gray;
+	border-radius: 4px;
+	padding: 5px;
+	font-weight: bold;
+	opacity: 1.0
+}
+
+.selectpage {
+	border: 2px solid gray;
+	border-radius: 4px;
+	font-weight: bold;
+	color: gray;
+	padding: 5px;
+	text-decoration: none;
+	opacity: 1;
+}

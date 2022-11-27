@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	margin-top: 50px;
+}
+
+.main {
+	width: 1200px;
+	height: 800px;
+	margin: auto;
+	background: black;
+	border: 10px solid black;
+	border-radius: 10px;
+}
+
+.background {
+	width: 100%;
+	height: 93%;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url( "../image/ERP_image_1.jpeg" );
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 5px;
+	float: left;
+}
+
+.home {
+	width: 100%;
+	height: 60px;
+	background: black;
+}
+
+.home a {
+	width: 90px;
+	height: 0px;
+	margin-left: 545px;
+	line-height: 100px;
+}
+
+.home img {
+	width: 90px;
+	height: 50px;
+}
+
+.idsearch {
+	width: 500px;
+	margin: auto;
+	position: relative;
+	top: 160px;
+}
+
+#logincss {
+	width: 350px;
+	margin: auto;
+	color: white;
+}
+
+.search_select {
+	width: 330px;
+	height: 50px;
+	margin: auto;
+	margin-bottom: 0px;
+	line-height: 50px;
+}
+
+.radio_1, .radio_2 {
+	color: white;
+}
+
+.radio_1 {
+	float: left;
+	margin-left: 30px;
+}
+
+.radio_2 {
+	float: right;
+	margin-right: 30px;
+}
+
+.input {
+	width: 350px;
+	height: 25px;
+	padding: 10px;
+	box-sizing: unset;
+	display: block;
+	margin: auto;
+	margin-bottom: 5px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+}
+
+.loginbutton {
+	width: 374px;
+	height: 70px;
+	background-color: white;
+	color: gray;
+	border: 1px solid #aaa;
+	font-size: 18px;
+	font-weight: bold;
+	transition: 0.3s;
+	display: block;
+	margin: auto;
+	margin-top: 50px;
+	border-radius: 4px;
+}
+
+.loginbutton:hover {
+	background: #2b9be4;
+	border: 1px solid #2b9be4;
+	color: white;
+}
