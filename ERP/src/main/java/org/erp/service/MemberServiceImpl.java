@@ -13,7 +13,7 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberMapper mm;
 
-	// 회원가입
+	// 사원 등록
 	public void signup(MemberVO member) {
 		mm.signup(member);
 	}
@@ -52,11 +52,18 @@ public class MemberServiceImpl implements MemberService{
 		mm.remove(remove);
 	}
 	
+	// 로그인 체크
 	public MemberVO login(MemberVO member) {
 		return mm.login(member);
 	}
 	
+	// 아이디 찾기
 	public String idsearch(MemberVO member) {
+		return mm.idsearch(member);
+	}
+	
+	// 아이디 찾기
+	public String pwsearch(MemberVO member) {
 		return mm.idsearch(member);
 	}
 }

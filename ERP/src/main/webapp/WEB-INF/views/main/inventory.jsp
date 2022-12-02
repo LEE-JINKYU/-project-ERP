@@ -38,28 +38,36 @@
 							<td class="me"><select name="companyname" id="selectBox1">
 									<option value="">::업체를 선택하세요::</option>
 									<c:forEach items="${productlist}" var="prolist">
-										<option><c:out value="${prolist.companyname}" /></option>
+										<option><c:out value="${prolist.companyname}" />
+										</option>
 									</c:forEach>
-							</select> <a href="/main/inventory" class="clear"><img src="../../../resources/image/clear.png" class="clear"></a></td>
+							               </select> 
+							               <a href="/main/inventory" class="clear">
+							               <img src="../../../resources/image/clear.png" class="clear">
+							               </a>
+						    </td>
+							
 							<th>상품선택</th>
 							<td><select name="productname" id="productname">
 									<option value="">::상품을 선택하세요::</option>
-							</select><input type="hidden" id="productid" name="productid"></td>
+							    </select>
+							    <input type="hidden" id="productid" name="productid">
+							</td>
 						</tr>
 
 						<tr>
 							<th>검색</th>
-							<td><form action="/main/inventory" id="searchForm"
-									method="get">
+							<td><form action="/main/inventory" id="searchForm" method="get">
 									<div class="rightdiv">
 										<select name="type" class="selectbox">
 											<option value="C">거래처명</option>
 											<option value="P">상품명</option>
-										</select> <span><input name="keyword" type="text"
-											placeholder="검색어 입력" class="search"></span> <span><input
-											type="submit" value="검색" class="searchbtn"></span>
+										</select> 
+										<span><input name="keyword" type="text" placeholder="검색어 입력" class="search"></span>
+										<span><input type="submit" value="검색" class="searchbtn"></span>
 									</div>
-								</form></td>
+								</form>
+							</td>
 						</tr>
 
 					</table>

@@ -14,6 +14,7 @@ public class CartServiceImpl implements CartService {
 	@Autowired
 	CartMapper ctm;
 
+	// 카트 추가
 	@Override
 	public void addCart(CartDTO cart) {
 		ctm.addCart(cart);

@@ -118,17 +118,15 @@
 									<td>${cartInfo.name}</td>
 									<td>${cartInfo.companyname}</td>
 									<td>${cartInfo.productname}</td>
-									<td><fmt:formatNumber value="${cartInfo.price}"
-											pattern="#,### 원" /></td>
-									<td><fmt:formatNumber value="${cartInfo.productcount}"
-											pattern="#,### 개" /></td>
-									<td><fmt:formatNumber value="${cartInfo.totalprice}"
-											pattern="#,### 원" /></td>
-									<td><input type="button" value="상세" class="modify"
-										onclick="return modify('${cartInfo.cartid}');"> <a
-										href="/cart/delete?cartid=${cartInfo.cartid}"><input
-											type="button" value="삭제" class="delete"
-											onclick="return delchk();"></a></td>
+									<td><fmt:formatNumber value="${cartInfo.price}" pattern="#,### 원" /></td>
+									<td><fmt:formatNumber value="${cartInfo.productcount}" pattern="#,### 개" /></td>
+									<td><fmt:formatNumber value="${cartInfo.totalprice}" pattern="#,### 원" /></td>
+									<td>
+									  <input type="button" value="상세" class="modify" onclick="return modify('${cartInfo.cartid}');">
+								    	 <a href="/cart/delete?cartid=${cartInfo.cartid}">
+								    	   <input type="button" value="삭제" class="delete" onclick="return delchk();">
+								    	 </a>
+								    </td>
 								</tr>
 							</c:forEach>
 						</table>

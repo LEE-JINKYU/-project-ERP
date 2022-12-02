@@ -38,9 +38,9 @@
 					</form>
 					<form action="/login/pwsearch" method="post" id="searchPw"
 						style="display: none">
-						<input type="text" name="id" class="input" id="idchk"
+						<input type="text" name="empno" class="input" id="idchk"
 							placeholder="사원번호를 입력해주세요"> <input type="text"
-							name="email" class="input" placeholder="이메일을 입력해주세요"> <input
+							name="name" class="input" placeholder="이름을 입력해주세요"> <input
 							type="submit" value="확인" class="loginbutton">
 					</form>
 				</div>

@@ -128,24 +128,22 @@
 											pattern="#,### 원" /></td>
 									<td><c:choose>
 											<c:when test="${cartInfo.confirm==1}">
-												<input type="button" value="상세" class="modify"
-													onclick="return modify('${cartInfo.cartid}');">
+												<input type="button" value="상세" class="modify" onclick="return modify('${cartInfo.cartid}');">
 
-												<a href="/cart/manager_list_delete?cartid=${cartInfo.cartid}"> <input
-													type="button" value="삭제" class="delete"
-													onclick="return delchk();"></a>
+												<a href="/cart/manager_list_delete?cartid=${cartInfo.cartid}"> 
+												<input type="button" value="삭제" class="delete" onclick="return delchk();"></a>
 
 												<a href="/cart/list_confirm?cartid=${cartInfo.cartid}">
-													<input type="button" value="승인" class="list_confirm"
-													onclick="return confirm();">
-												</a>
+												<input type="button" value="승인" class="list_confirm" onclick="return confirm();"></a>
 											</c:when>
+											
 											<c:otherwise>
 												<span class="confirm">승인완료</span>
 												<input type="button" value="상세" class="modify"
 													onclick="return confirm_modify('${cartInfo.cartid}');">
 											</c:otherwise>
 										</c:choose></td>
+								
 								</tr>
 							</c:forEach>
 						</table>

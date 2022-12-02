@@ -7,7 +7,7 @@ import org.erp.model.CriteriaVO;
 
 public interface CartService {
 
-	// 장바구니 추가
+	// 카트 추가
 	public void addCart(CartDTO cart);
 	
 	public int deleteCart(CartDTO cartid);

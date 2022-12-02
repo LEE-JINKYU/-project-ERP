@@ -220,23 +220,41 @@ h3 {
 }
 
 .body_right table td:nth-child(1) {
-	width: 7%;
+	width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100px;
 }
 
 .body_right table td:nth-child(2) {
-	width: 15%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100px;
 }
 
 .body_right table td:nth-child(3) {
-	width: 20%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 140px;
 }
 
 .body_right table td:nth-child(4) {
-	width: 15%;
+	width: 120px;
 }
 
 .body_right table td:nth-child(5) {
-	width: 10%;
+	width: 90px;
+}
+
+.body_right table td:nth-child(6) {
+	width: 130px;
+}
+
+.body_right table td:nth-child(7) {
+	width: 150px;
 }
 
 .modify, .delete {

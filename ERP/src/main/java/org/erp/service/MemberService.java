@@ -30,9 +30,13 @@ public interface MemberService {
 	// 멤버 삭제 설계
 	public void remove(MemberVO remove);
 	
+	// 로그인 체크
 	public MemberVO login(MemberVO member);
 
+	// 아이디 찾기
 	public String idsearch(MemberVO member);
 
-	
+	// 아이디 찾기
+	public String pwsearch(MemberVO member);
+
 }

@@ -54,12 +54,12 @@ public class ProductServiceImpl implements ProductService {
 		return pm.group_company(product);
 	}
 
-	// 선택한 상품 정보 불러오기
+	// 카트 화면에서 업체 선택
 	public ArrayList<ProductVO> company_select(ProductVO product) {
 		return pm.company_select(product);
 	}
 
-	// 선택한 상품 정보 불러오기
+	// 카트 화면에서 상품 선택
 	public ProductVO product_select(ProductVO product) {
 		return pm.product_select(product);
 	}

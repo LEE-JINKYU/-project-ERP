@@ -63,7 +63,7 @@
 								<tr>
 									<td>상품명</td>
 									<td><input type="text" id="productname" name="productname"
-										maxlength="10" class="box"></td>
+										maxlength="100" class="box"></td>
 								</tr>
 								<tr>
 									<td>가격</td>

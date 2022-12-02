@@ -10,14 +10,19 @@ public interface MemberMapper {
 	
 	// 사원 등록
 	public void signup(MemberVO member);
+	
 	// 사원 등록 ID 중복확인
 	public int idcheck(MemberVO member);
+	
 	// 사원 리스트
 	public ArrayList<MemberVO> emplist(CriteriaVO cri);
+	
 	// 멤버 리스트에서 전체 회원수 조회
 	public int total(CriteriaVO cri);
+	
 	// 사원 정보 불러오기
 	public MemberVO modify(MemberVO member);
+	
 	// 사원 정보 수정
 	public void modifypost(MemberVO member);
 	
@@ -25,8 +30,13 @@ public interface MemberMapper {
 
 	// 멤버 삭제 설계
 	public void remove(MemberVO remove);
-	// 로그인
+	
+	// 로그인 체크
 	public MemberVO login(MemberVO member);
 	
+	// 아이디 찾기
 	public String idsearch(MemberVO member);
+	
+	// 비밀번호 찾기
+	public String pwsearch(MemberVO member);
 }

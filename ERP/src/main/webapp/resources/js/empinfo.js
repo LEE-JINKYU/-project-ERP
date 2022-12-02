@@ -98,7 +98,6 @@ function modify(empno) {
 			if (data.ranking == '사원') {
 				$("select[name=ranking]").val("사원").prop("selected", true);
 			}
-
 		} // success
 	});
 }
@@ -168,7 +167,6 @@ function jsSubmit() {
 		return false;
 	}
 	;
-
 	alert("가입이 완료 되었습니다.");
 	return true;
 	;

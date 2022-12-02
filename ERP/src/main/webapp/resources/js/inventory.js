@@ -18,9 +18,8 @@ $(document).on("change","#selectBox1",function() {
 								+ "</option>");
 						$('#productname').append(option);
 					}
-
+					
 					var html = '';
-
 					for (key in data) {
 						html += '<tr>';
 						html += '<td>' + data[key].productid + '</td>';
@@ -33,11 +32,9 @@ $(document).on("change","#selectBox1",function() {
 
 					$("#resultTbody").empty();
 					$("#resultTbody").append(html);
-
 				} // success
-
 			});
-		})
+})
 
 $(document).on("change", "#productname", function() {
 
@@ -52,7 +49,6 @@ $(document).on("change", "#productname", function() {
 		success : function(data) {
 
 			var html = '';
-
 			for (key in data) {
 				html += '<tr>';
 				html += '<td>' + data[0].productid + '</td>';
@@ -65,8 +61,8 @@ $(document).on("change", "#productname", function() {
 
 			$("#resultTbody").empty();
 			$("#resultTbody").append(html);
-
 		} // success
-
 	});
 });
+
+

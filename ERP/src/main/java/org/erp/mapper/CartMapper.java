@@ -8,7 +8,7 @@ import org.erp.model.ProductVO;
 
 public interface CartMapper {
 
-	// 카트추가
+	// 카트 추가
 	public void addCart(CartDTO cart);
 
 	// 카트 삭제

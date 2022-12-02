@@ -28,10 +28,10 @@ public interface ProductService {
 	// 거래처 그룹 리스트
 	public ArrayList<ProductVO> group_company(CriteriaVO product);
 	
-	// 선택한 상품 정보 불러오기
+	// 카트 화면에서 업체 선택
 	public ArrayList<ProductVO> company_select(ProductVO product);
 	
-	// 선택한 상품 정보 불러오기
+	// 카트 화면에서 상품 선택
 	public ProductVO product_select(ProductVO product);
 	
 	public void product_delete(ProductVO delete);

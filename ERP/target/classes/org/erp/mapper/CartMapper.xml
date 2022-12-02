@@ -7,15 +7,16 @@
 <mapper namespace="org.erp.mapper.CartMapper">
 
 	<insert id="addCart">
-		insert into cart (empno, productid, productcount, companyname, productcnt, confirm)
-		values(#{empno}, #{productid}, #{productcount}, #{companyname}, #{productcnt}, 1)
+		insert into cart (empno, productid, productcount,
+		companyname, productcnt, confirm)
+		values(#{empno}, #{productid},
+		#{productcount}, #{companyname}, #{productcnt}, 1)
 	</insert>
 
 	<delete id="deleteCart">
 		delete from cart where cartid=#{cartid}
 	</delete>
 
-	<!-- 구매 신청 (purchase) -->
 	<select id="getCartList" resultType="org.erp.model.CartDTO">
 		select *
 		from(
@@ -153,8 +154,8 @@
 		join
 		product b on a.productid = b.productid
 		where
-		companyname=#{companyname} and
-		productname=#{productname} and
+		b.companyname=#{companyname} and
+		b.productname=#{productname} and
 		confirm='0'
 		group by
 		productname;
@@ -189,7 +190,7 @@
 		left outer join member c on a.empno=c.empno),
 		(select @rownum:=0) as tmp
 		<if test="keyword == null">
-		where confirm = '0'
+			where confirm = '0'
 		</if>
 		<if test="keyword != null">
 			<choose>

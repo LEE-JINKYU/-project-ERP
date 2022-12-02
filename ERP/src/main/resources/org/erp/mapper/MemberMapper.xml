@@ -35,16 +35,17 @@
 
 	<!-- 사원 정보 불러오기 -->
 	<select id="modify" resultType="org.erp.model.MemberVO">
-		select * from member where empno=#{empno};
+		select * from member where
+		empno=#{empno};
 	</select>
 
 	<update id="modifypost">
 		update member set empno=#{empno},
 		password=#{password}, name=#{name}, hiredate=#{hiredate},
-		phone=#{phone}, gender=#{gender}, ranking=#{ranking}, addr=#{addr},
-		birth=#{birth} where empno=#{empno};
+		phone=#{phone}, gender=#{gender}, ranking=#{ranking},
+		addr=#{addr}, birth=#{birth} where empno=#{empno};
 	</update>
-	
+
 	<update id="mypagemodify">
 		update member set password=#{password}, addr=#{addr}
 		where empno=#{empno};
@@ -64,4 +65,12 @@
 		select empno from member where
 		name=#{name} and phone=#{phone};
 	</select>
+	
+	<select id="pwsearch" resultType="String">
+		select empno from member where
+		empno=#{empno} and name=#{name};
+	</select>
+	
+	
+	
 </mapper>
