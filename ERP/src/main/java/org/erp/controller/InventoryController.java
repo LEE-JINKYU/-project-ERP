@@ -29,14 +29,14 @@ public class InventoryController {
 	// 재고 관리 화면 이동
 	// -----------------------------------------------------------------------------------------
 	@RequestMapping(value = "/main/inventory", method = RequestMethod.GET)
-	public String inventory(HttpServletRequest request, CriteriaVO inventory, CriteriaVO product, Model model,
+	public String inventory(HttpServletRequest request,  Model model,
 			CriteriaVO cri) {
 		HttpSession session = request.getSession();
 		String empno = (String) session.getAttribute("empno");
 		System.out.println(empno);
 
-		model.addAttribute("productlist", ps.group_company(product));
-		model.addAttribute("inventory", cts.inventory(inventory));
+		model.addAttribute("productlist", ps.group_company(cri));
+		model.addAttribute("inventory", cts.inventory(cri));
 		int total = cts.inventory_total(cri);
 		System.out.println(total);
 		model.addAttribute("paging", new pageVO(cri, total));
